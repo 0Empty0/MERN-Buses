@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
-import jwt, { JwtPayload } from 'jsonwebtoken'
+import jwt from 'jsonwebtoken'
 
 interface UserRequest extends Request {
 	userId?: any
@@ -14,16 +14,9 @@ export const checkAuth = (
 
 	if (token) {
 		try {
-			// const decoded: JwtPayload | string =
 			jwt.verify(token, process.env.JWT_SECRET!, (err, decoded) => {
 				req.userId = decoded
 			})
-
-			// if (typeof decoded !== 'string') {
-			// 	req.userId = decoded.id
-			// } else {
-			// 	throw new Error('')
-			// }
 
 			next()
 		} catch (error) {
