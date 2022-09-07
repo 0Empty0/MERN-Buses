@@ -8,6 +8,7 @@ import userRouter from './routes/user'
 import agencyRouter from './routes/agency'
 import busRouter from './routes/bus'
 import reviewRouter from './routes/review'
+import orderRouter from './routes/order'
 
 const app: Express = express()
 dotenv.config()
@@ -26,6 +27,7 @@ app.use('/api/user', userRouter)
 app.use('/api/agency', agencyRouter)
 app.use('/api/bus', busRouter)
 app.use('/api/review', reviewRouter)
+app.use('/api/order', orderRouter)
 
 //Start
 const start = async () => {
