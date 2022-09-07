@@ -78,7 +78,7 @@ export const login = async (req: Request, res: Response) => {
 //Get User
 export const getUser = async (req: Request, res: Response) => {
 	try {
-		const user = await User.findById(req.userId?.id)
+		const user = await User.findById(req.userId)
 
 		if (!user) {
 			return res.json({

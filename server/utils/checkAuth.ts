@@ -15,7 +15,11 @@ export const checkAuth = (
 	if (token) {
 		try {
 			jwt.verify(token, process.env.JWT_SECRET!, (err, decoded) => {
-				req.userId = decoded
+				if (typeof decoded !== 'string') {
+					req.userId = decoded?.id
+				} else {
+					throw new Error('')
+				}
 			})
 
 			next()
