@@ -8,12 +8,15 @@ interface IAgency {
 	orders: Schema.Types.ObjectId[]
 }
 
-const AgencySchema = new Schema<IAgency>({
-	author: { type: Schema.Types.ObjectId, ref: 'User' },
-	title: { type: String, required: true },
-	logo: { type: String, required: true },
-	buses: [{ type: Schema.Types.ObjectId, ref: 'Bus' }],
-	orders: [{ type: Schema.Types.ObjectId, ref: 'Order' }],
-})
+const AgencySchema = new Schema<IAgency>(
+	{
+		author: { type: Schema.Types.ObjectId, ref: 'User' },
+		title: { type: String, required: true },
+		logo: { type: String, required: true },
+		buses: [{ type: Schema.Types.ObjectId, ref: 'Bus' }],
+		orders: [{ type: Schema.Types.ObjectId, ref: 'Order' }],
+	},
+	{ timestamps: true }
+)
 
 export default model<IAgency>('Agency', AgencySchema)

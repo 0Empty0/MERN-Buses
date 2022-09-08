@@ -6,6 +6,7 @@ import {
 	deleteAgency,
 	getAgency,
 	getAgencies,
+	getMyAgency,
 	getAgencyOrder,
 	getAgencyBuses,
 } from '../controllers/agency'
@@ -27,6 +28,9 @@ router.get('/:id', getAgency)
 
 //Get Agencies
 router.get('/', getAgencies)
+
+//Get My Agency
+router.get('/user', checkAuth, getMyAgency)
 
 //Get Agency Order
 router.get('/orders/:id', getAgencyOrder)
