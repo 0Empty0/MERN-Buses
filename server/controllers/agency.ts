@@ -78,7 +78,7 @@ export const deleteAgency = async (req: Request, res: Response) => {
 			},
 		})
 
-		res.json({ message: 'Agency has been deleted' })
+		res.json({ message: 'Agency has been deleted successfully' })
 	} catch (error) {
 		res.json({
 			message: 'Something went wrong',
