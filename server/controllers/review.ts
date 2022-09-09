@@ -36,15 +36,10 @@ export const updateReview = async (req: Request, res: Response) => {
 		const review = await Review.findById(req.params.id)
 
 		if (review) {
-			const updatedReview = new Review({
-				author: req.userId,
-				rate,
-				title,
-				text,
-				date,
-			})
-
-			updatedReview.save()
+			review.rate = rate as number
+			review.title = title as string
+			review.text = text as string
+			review.date = date as Date
 		} else {
 			return res.json({
 				message: 'Something went wrong',

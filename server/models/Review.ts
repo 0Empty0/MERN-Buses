@@ -1,6 +1,12 @@
 import { Schema, model } from 'mongoose'
 
-interface IReview {}
+interface IReview {
+	author: Schema.Types.ObjectId
+	rate: number
+	title: string
+	text: string
+	date: Date
+}
 
 const ReviewSchema = new Schema<IReview>(
 	{
