@@ -1,11 +1,19 @@
 import { UploadedFile } from 'express-fileupload'
 import path from 'path'
 
-export const saveImages = (image: UploadedFile | UploadedFile[]) => {
-	let filename = Date.now().toString() + image
-	let logo = image as UploadedFile
+export const saveImages = (images: any) => {
+	const filenames: string[] = []
 
-	logo.mv(path.join(__dirname, '..', 'uploads', filename))
+	// images.map((image, index) => {
+	// 	let filename = Date.now().toString() + index + image
 
-	return filename
+	// 	image.mv(path.join(__dirname, '..', 'uploads', filename))
+
+	// 	filenames.push(filename)
+	// })
+
+	console.log(images)
+
+	// return filenames
+	return ''
 }

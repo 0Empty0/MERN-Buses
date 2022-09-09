@@ -6,7 +6,7 @@ interface IBus {
 	description: string
 	price: number
 	discount: number
-	thumbnail: string[]
+	thumbnails: string[]
 
 	from: string
 	to: string
@@ -16,26 +16,29 @@ interface IBus {
 
 	schedule: string[][]
 
-	reviews: Schema.Types.ObjectId
+	reviews: Schema.Types.ObjectId[]
 }
 
-const BusSchema = new Schema<IBus>({
-	author: { type: Schema.Types.ObjectId, ref: 'Agency' },
-	title: { type: String, required: true },
-	description: { type: String, required: true },
-	price: { type: Number, required: true },
-	discount: { type: Number, default: 0 },
-	thumbnail: [{ type: String, required: true }],
+const BusSchema = new Schema<IBus>(
+	{
+		author: { type: Schema.Types.ObjectId, ref: 'Agency' },
+		title: { type: String, required: true },
+		description: { type: String, required: true },
+		price: { type: Number, required: true },
+		discount: { type: Number, default: 0 },
+		thumbnails: [{ type: String, required: true }],
 
-	from: { type: String, required: true },
-	to: { type: String, required: true },
-	stops: [{ type: String, default: '' }],
+		from: { type: String, required: true },
+		to: { type: String, required: true },
+		stops: [{ type: String, default: '' }],
 
-	seats: [{ type: Schema.Types.Mixed, required: true }],
+		seats: [{ type: Schema.Types.Mixed, required: true }],
 
-	schedule: [[{ type: String }], [{ type: String }]],
+		schedule: [[{ type: String }], [{ type: String }]],
 
-	reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }],
-})
+		reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }],
+	},
+	{ timestamps: true }
+)
 
 export default model('Bus', BusSchema)

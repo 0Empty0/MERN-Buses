@@ -48,7 +48,7 @@ export const updateAgency = async (req: Request, res: Response) => {
 			if (req.files) {
 				const filename = saveImages(req.files.logo)
 
-				agency.logo = filename || ('' as string)
+				agency.logo = filename || ''
 			}
 
 			agency.title = title as string
@@ -70,7 +70,7 @@ export const deleteAgency = async (req: Request, res: Response) => {
 	try {
 		const agency = await Agency.findByIdAndDelete(req.params.id)
 
-		if (!agency) res.json({ message: 'No Agency found' })
+		if (!agency) return res.json({ message: 'No Agency found' })
 
 		await User.findByIdAndUpdate(req.userId, {
 			$pull: {
@@ -116,8 +116,6 @@ export const getAgencies = async (req: Request, res: Response) => {
 //Get My Agencies
 export const getMyAgency = async (req: Request, res: Response) => {
 	try {
-		console.log(req.userId)
-
 		const user = await User.findById(req.userId)
 
 		if (!user) return res.json({ message: 'User not found' })
