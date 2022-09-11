@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
 
-import userSlice from './features/user/user'
-import agencySlice from './features/agency/agency'
-import busSlice from './features/bus/bus'
-import reviewSlice from './features/review/review'
-import orderSlice from './features/order/order'
+import userSlice from './features/user/userSlice'
+import agencySlice from './features/agency/agencySlice'
+import busSlice from './features/bus/busSlice'
+import reviewSlice from './features/review/reviewSlice'
+import orderSlice from './features/order/orderSlice'
 
 const store = configureStore({
 	reducer: {
