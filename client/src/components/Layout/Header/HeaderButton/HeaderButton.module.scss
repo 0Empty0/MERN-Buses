@@ -1,0 +1,41 @@
+@import '../../../../styles/vars';
+
+.dropdown {
+	padding-top: 20px;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 85%;
+	border-radius: 8px;
+	opacity: 0;
+	clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+	transition: all 0.3s;
+	& > * {
+		color: #fff;
+		display: block;
+		text-align: left;
+		width: 100%;
+		padding: 5px 10px;
+		border-radius: 8px;
+		transition: all 0.3s;
+		background: $secondary-50;
+		&:hover {
+			background: $secondary-70;
+		}
+		&:first-child {
+			border-radius: 8px 8px 0 0;
+		}
+		&:last-child {
+			border-radius: 0 0 8px 8px;
+		}
+	}
+	&__wrapper {
+		position: relative;
+		&:hover {
+			.dropdown {
+				opacity: 1;
+				clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+			}
+		}
+	}
+}

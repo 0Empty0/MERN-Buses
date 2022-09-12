@@ -1,9 +1,9 @@
-import { useAppSelector } from '@/hooks/use-redux'
-import { checkIsAuth } from '@/store/features/user/userSlice'
 import { FC } from 'react'
 import { Routes, Route } from 'react-router-dom'
 
 import { publicRoutes, privateRoutes } from './routes'
+import { checkIsAuth } from '@/store/features/user/userSlice'
+import { useAppSelector } from '@/hooks/use-redux'
 
 const Routers: FC = () => {
 	const isAuth = useAppSelector(checkIsAuth)

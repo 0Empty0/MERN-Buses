@@ -1,0 +1,47 @@
+@import '../../../styles/vars';
+@import '../../../styles/fonts';
+
+.header {
+	padding: 45px 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.item {
+	display: inline-block;
+	& + & {
+		margin-left: 40px;
+	}
+}
+.link {
+	position: relative;
+	color: $text-body;
+	transition: all 0.3s;
+	&:hover {
+		color: $text-title;
+	}
+	&::after {
+		content: '';
+		width: 12px;
+		height: 12px;
+		border-radius: 50%;
+		background: $primary-70;
+		position: absolute;
+		transform: translateX(-50%) scale(0);
+		opacity: 0;
+		bottom: -20px;
+		left: 50%;
+		transition: all 0.3s;
+	}
+}
+.active {
+	color: $text-title;
+	font-family: 'Poppins-SemiBold';
+	font-size: 1rem;
+	line-height: 2rem;
+	letter-spacing: -0.2px;
+	&::after {
+		transform: translateX(-50%) scale(1);
+		opacity: 1;
+	}
+}

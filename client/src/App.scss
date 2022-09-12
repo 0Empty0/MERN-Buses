@@ -1,0 +1,178 @@
+@import './styles/fonts';
+@import './styles/vars';
+
+@mixin heading-bold {
+	font-family: 'NunitoSans-Bold';
+	text-transform: capitalize;
+}
+@mixin heading-semibold {
+	font-family: 'NunitoSans-SemiBold';
+	text-transform: capitalize;
+}
+
+.heading {
+	&-bold {
+		&-h1 {
+			@include heading-bold;
+			font-size: 4.5rem;
+			line-height: 6rem;
+		}
+		&-h2 {
+			@include heading-bold;
+			font-size: 4rem;
+			line-height: 5.5rem;
+		}
+		&-h3 {
+			@include heading-bold;
+			font-size: 3rem;
+			line-height: 4rem;
+		}
+		&-h4 {
+			@include heading-bold;
+			font-size: 2rem;
+			line-height: 3rem;
+		}
+		&-h5 {
+			@include heading-bold;
+			font-size: 1.5rem;
+			line-height: 2.5rem;
+		}
+		&-h6 {
+			@include heading-bold;
+			font-size: 1rem;
+			line-height: 1.5rem;
+		}
+	}
+	&-semibold {
+		&-h1 {
+			@include heading-semibold;
+			font-size: 4.5rem;
+			line-height: 6rem;
+		}
+		&-h2 {
+			@include heading-semibold;
+			font-size: 4rem;
+			line-height: 5.5rem;
+		}
+		&-h3 {
+			@include heading-semibold;
+			font-size: 3rem;
+			line-height: 4rem;
+		}
+		&-h4 {
+			@include heading-semibold;
+			font-size: 2rem;
+			line-height: 3rem;
+		}
+		&-h5 {
+			@include heading-semibold;
+			font-size: 1.5rem;
+			line-height: 2.5rem;
+		}
+		&-h6 {
+			@include heading-semibold;
+			font-size: 1rem;
+			line-height: 1.5rem;
+		}
+	}
+}
+
+.paragraph {
+	&-semibold,
+	&-medium {
+		&-body {
+			font-size: 1rem;
+			line-height: 2rem;
+		}
+		&-caption {
+			font-size: 0.875rem;
+			line-height: 1.5rem;
+		}
+		&-label {
+			font-size: 0.75rem;
+			line-height: 1.5rem;
+		}
+	}
+	&-semibold {
+		&-body,
+		&-caption,
+		&-label {
+			font-family: 'Poppins-SemiBold';
+		}
+	}
+	&-medium {
+		&-body,
+		&-caption,
+		&-label {
+			font-family: 'Poppins-Medium';
+		}
+	}
+	&-regular {
+		&-body {
+			font-family: 'Poppins-Regular';
+			font-size: 1rem;
+			line-height: 1.625rem;
+		}
+		&-caption {
+			font-family: 'Poppins-Regular';
+			font-size: 0.875rem;
+			line-height: 1.5rem;
+		}
+		&-label {
+			font-family: 'Poppins-Regular';
+			font-size: 0.75rem;
+			line-height: 1.5rem;
+		}
+	}
+}
+
+.button {
+	cursor: pointer;
+	padding: 12px 32px;
+	background: $secondary-50;
+	font-family: 'Poppins-SemiBold';
+	font-size: 1rem;
+	line-height: 2rem;
+	color: #fff;
+	border-radius: 8px;
+	transition: all 0.3s;
+	&:hover {
+		background: $secondary-70;
+	}
+}
+
+.input {
+	padding: 20px 16px;
+	border: 1px solid $text-in-field;
+	font-family: 'Poppins-Regular';
+	font-size: 1rem;
+	line-height: 1.625rem;
+	border-radius: 8px;
+	&__wrapper {
+		display: flex;
+		flex-direction: column;
+		& + & {
+			margin-top: 15px;
+		}
+	}
+	&__file-wrapper {
+		width: 250px;
+		height: 250px;
+		img {
+			width: 240px;
+			height: 240px;
+			object-fit: cover;
+			object-position: center;
+		}
+		input {
+			display: none;
+		}
+	}
+}
+.label {
+	color: $text-title;
+	@include heading-bold;
+	font-size: 1.5rem;
+	line-height: 2.5rem;
+	margin-bottom: 8px;
+}

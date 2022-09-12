@@ -1,0 +1,32 @@
+@mixin font-props($fw) {
+	font-style: normal;
+	font-display: swap;
+	font-weight: $fw;
+}
+
+@font-face {
+	src: url('../assets/fonts/NunitoSans-Bold.ttf') format('truetype');
+	font-family: 'NunitoSans-Bold';
+	@include font-props(700);
+}
+@font-face {
+	src: url('../assets/fonts/NunitoSans-SemiBold.ttf') format('truetype');
+	font-family: 'NunitoSans-SemiBold';
+	@include font-props(600);
+}
+
+@font-face {
+	src: url('../assets/fonts/Poppins-SemiBold.ttf') format('truetype');
+	font-family: 'Poppins-SemiBold';
+	@include font-props(600);
+}
+@font-face {
+	src: url('../assets/fonts/Poppins-Medium.ttf') format('truetype');
+	font-family: 'Poppins-Medium';
+	@include font-props(500);
+}
+@font-face {
+	src: url('../assets/fonts/Poppins-Regular.ttf') format('truetype');
+	font-family: 'Poppins-Regular';
+	@include font-props(400);
+}

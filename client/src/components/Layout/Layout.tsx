@@ -6,7 +6,7 @@ const Layout: FC<PropsWithChildren<unknown>> = props => {
 	return (
 		<Fragment>
 			<Header />
-			<main>{props.children}</main>
+			<main className='main'>{props.children}</main>
 			<Footer />
 		</Fragment>
 	)

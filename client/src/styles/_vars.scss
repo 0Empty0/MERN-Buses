@@ -1,0 +1,41 @@
+:root {
+	--primary-80: #155c3f;
+	--primary-70: #27ad77;
+	--primary-50: #61dbaa;
+	--primary-30: #8ae5c0;
+	--primary-10: #def8ed;
+
+	--secondary-80: #853f00;
+	--secondary-70: #eb7000;
+	--secondary-50: #ff8a20;
+	--secondary-30: #ffbf85;
+	--secondary-10: #ffdab8;
+
+	--text-title: #123763;
+	--text-body: #6d6d6d;
+	--text-in-field: #cccccc;
+	--text-disabled: #e6e6e6;
+	--title-text: #333333;
+
+	--yellow: #ffc000;
+}
+
+$primary-80: var(--primary-80);
+$primary-70: var(--primary-70);
+$primary-50: var(--primary-50);
+$primary-30: var(--primary-30);
+$primary-10: var(--primary-10);
+
+$secondary-80: var(--secondary-80);
+$secondary-70: var(--secondary-70);
+$secondary-50: var(--secondary-50);
+$secondary-30: var(--secondary-30);
+$secondary-10: var(--secondary-10);
+
+$text-title: var(--text-title);
+$text-body: var(--text-body);
+$text-in-field: var(--text-in-field);
+$text-disabled: var(--text-disabled);
+$title-text: var(--title-text);
+
+$yellow: var(--yellow);
