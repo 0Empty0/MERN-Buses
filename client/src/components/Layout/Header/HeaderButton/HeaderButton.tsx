@@ -8,7 +8,7 @@ const HeaderButton: FC<PropsWithChildren<{ isAuth: boolean }>> = ({
 }) => {
 	return (
 		<Fragment>
-			{!isAuth ? (
+			{isAuth ? (
 				<div className={`${styles.dropdown__wrapper} button`}>
 					<span>My Account</span>
 					<div className={`${styles.dropdown} paragraph-medium-body`}>
