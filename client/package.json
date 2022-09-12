@@ -2,6 +2,7 @@
 	"name": "client",
 	"version": "0.1.0",
 	"private": true,
+	"type": "module",
 	"dependencies": {
 		"@craco/craco": "^6.4.5",
 		"@reduxjs/toolkit": "^1.8.5",
