@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 
 import styles from './HeaderButton.module.scss'
 
-const HeaderButton: FC<PropsWithChildren<{ isAuth: boolean }>> = ({
-	isAuth,
-}) => {
+const HeaderButton: FC<
+	PropsWithChildren<{ isAuth: boolean; openModal: () => void }>
+> = ({ isAuth, openModal }) => {
 	return (
 		<Fragment>
 			{isAuth ? (
@@ -17,7 +17,9 @@ const HeaderButton: FC<PropsWithChildren<{ isAuth: boolean }>> = ({
 					</div>
 				</div>
 			) : (
-				<button className='button'>Login</button>
+				<button onClick={openModal} className='button'>
+					Login
+				</button>
 			)}
 		</Fragment>
 	)
