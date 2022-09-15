@@ -1,3 +1,5 @@
+import { useAppDispatch } from '@/hooks/use-redux'
+import { logout } from '@/store/features/user/userSlice'
 import { Fragment, FC, PropsWithChildren } from 'react'
 import { Link } from 'react-router-dom'
 
@@ -6,6 +8,14 @@ import styles from './HeaderButton.module.scss'
 const HeaderButton: FC<
 	PropsWithChildren<{ isAuth: boolean; openModal: () => void }>
 > = ({ isAuth, openModal }) => {
+	const dispatch = useAppDispatch()
+
+	const logoutHandler = () => {
+		dispatch(logout())
+
+		localStorage.removeItem('token')
+	}
+
 	return (
 		<Fragment>
 			{isAuth ? (
@@ -13,7 +23,7 @@ const HeaderButton: FC<
 					<span>My Account</span>
 					<div className={`${styles.dropdown} paragraph-medium-body`}>
 						<Link to='/account'>My Account</Link>
-						<button>Log Out</button>
+						<button onClick={logoutHandler}>Log Out</button>
 					</div>
 				</div>
 			) : (

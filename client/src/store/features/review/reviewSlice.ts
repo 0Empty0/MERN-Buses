@@ -1,9 +1,13 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
 import axios from '@/utils/axios'
 
-export interface IReviewState {}
+export interface IReviewState {
+	isLoading: boolean
+}
 
-const initialState: IReviewState = {}
+const initialState: IReviewState = {
+	isLoading: false,
+}
 
 export const func = createAsyncThunk('review', async () => {})
 

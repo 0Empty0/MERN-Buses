@@ -1,9 +1,13 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
 import axios from '@/utils/axios'
 
-export interface IBusState {}
+export interface IBusState {
+	isLoading: boolean
+}
 
-const initialState: IBusState = {}
+const initialState: IBusState = {
+	isLoading: false,
+}
 
 export const func = createAsyncThunk('bus', async () => {})
 

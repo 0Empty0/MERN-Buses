@@ -20,9 +20,9 @@ const inputStateReducer = (
 ): inputState => {
 	switch (action.type) {
 		case 'INPUT':
-			return { value: state.value, isTouched: state.isTouched }
+			return { value: action.value!, isTouched: state.isTouched }
 		case 'BLUR':
-			return { isTouched: state.isTouched, value: state.value }
+			return { isTouched: true, value: state.value }
 		case 'RESET':
 			return { value: '', isTouched: false }
 		default:
@@ -37,7 +37,7 @@ const useInput = (
 	isValid: boolean
 	hasError: boolean
 	valueChangeHandler: (event: ChangeEvent<HTMLInputElement>) => void
-	inputBlurHandler: (event: ChangeEvent<HTMLInputElement>) => void
+	inputBlurHandler: () => void
 	reset: () => void
 } => {
 	const [inputState, dispatch] = useReducer(
@@ -52,7 +52,7 @@ const useInput = (
 		dispatch({ type: 'INPUT', value: event.target.value })
 	}
 
-	const inputBlurHandler = (event: ChangeEvent<HTMLInputElement>): void => {
+	const inputBlurHandler = (): void => {
 		dispatch({ type: 'BLUR' })
 	}
 

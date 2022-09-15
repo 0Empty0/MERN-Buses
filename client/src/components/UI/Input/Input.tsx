@@ -1,4 +1,4 @@
-import { FC, PropsWithChildren, ChangeEvent, useId } from 'react'
+import { FC, PropsWithChildren, ChangeEvent, useId, memo } from 'react'
 
 import inputType from './inputType'
 
@@ -12,15 +12,7 @@ const Input: FC<
 		hasError?: boolean
 		errorLabel?: string
 	}>
-> = ({
-	type,
-	label,
-	onChange,
-	onBlur,
-	value,
-	hasError = false,
-	errorLabel,
-}) => {
+> = ({ type, label, onChange, onBlur, value, hasError, errorLabel }) => {
 	const id = useId()
 
 	return (
@@ -42,4 +34,4 @@ const Input: FC<
 	)
 }
 
-export default Input
+export default memo(Input)

@@ -1,11 +1,12 @@
-import { FC, PropsWithChildren, Fragment, useState, useEffect } from 'react'
+import { FC, PropsWithChildren, FormEvent, Fragment, useState } from 'react'
 import { Transition } from 'react-transition-group'
 
 import styles from './Authentication.module.scss'
 import Modal from '../Layout/Modal/Modal'
 import Input from '../UI/Input/Input'
 import useInput from '@/hooks/use-input'
-import { useAppDispatch, useAppSelector } from '@/hooks/use-redux'
+import { useAppDispatch } from '@/hooks/use-redux'
+import { loginUser, registerUser } from '@/store/features/user/userSlice'
 
 const Authentication: FC<
 	PropsWithChildren<{ isOpen: boolean; closeHandler: () => void }>
@@ -33,7 +34,6 @@ const Authentication: FC<
 	const [isLogging, setIsLogging] = useState(true)
 
 	const dispatch = useAppDispatch()
-	const { isLoading } = useAppSelector(state => state.user)
 
 	const changeHandler = (): void => {
 		setIsLogging(prevState => !prevState)
@@ -45,7 +45,32 @@ const Authentication: FC<
 	}
 
 	let formIsValid = false
-	if (usernameIsValid && passwordIsValid) formIsValid = true
+	if (usernameIsValid && passwordIsValid) {
+		formIsValid = true
+	}
+
+	const loginHandler = (event: FormEvent): void => {
+		event.preventDefault()
+		try {
+			dispatch(loginUser({ username, password }))
+
+			resetForm()
+			closeHandler()
+		} catch (error) {
+			console.log(error)
+		}
+	}
+	const registerHandler = (event: FormEvent): void => {
+		event.preventDefault()
+		try {
+			dispatch(registerUser({ username, password }))
+
+			resetForm()
+			closeHandler()
+		} catch (error) {
+			console.log(error)
+		}
+	}
 
 	return (
 		<Modal>
@@ -73,7 +98,7 @@ const Authentication: FC<
 							{isLogging ? (
 								<Fragment>
 									<h1 className={`${styles.title} heading-bold-h2`}>Login</h1>
-									<form>
+									<form onSubmit={loginHandler}>
 										<Input
 											label='Username'
 											type='text'
@@ -111,7 +136,7 @@ const Authentication: FC<
 									<h1 className={`${styles.title} heading-bold-h2`}>
 										Register
 									</h1>
-									<form>
+									<form onSubmit={registerHandler}>
 										<Input
 											label='Username'
 											type='text'

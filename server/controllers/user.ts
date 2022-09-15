@@ -9,7 +9,7 @@ export const register = async (req: Request, res: Response) => {
 	try {
 		const { username, password } = req.body
 
-		const isUsed = await User.findOne(username)
+		const isUsed = await User.findOne({ username })
 
 		if (isUsed) {
 			return res.json({
@@ -34,6 +34,8 @@ export const register = async (req: Request, res: Response) => {
 			message: 'User registered successfully',
 		})
 	} catch (error) {
+		console.error(error)
+
 		return res.json({
 			message: 'Something went wrong',
 		})
@@ -45,7 +47,7 @@ export const login = async (req: Request, res: Response) => {
 	try {
 		const { username, password } = req.body
 
-		const user = await User.findOne(username)
+		const user = await User.findOne({ username })
 
 		if (!user) {
 			return res.json({

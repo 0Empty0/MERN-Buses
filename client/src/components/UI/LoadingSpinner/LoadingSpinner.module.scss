@@ -1,0 +1,14 @@
+@keyframes delayVisibility {
+	0% {
+		opacity: 0;
+	}
+	99% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+.spinner {
+	animation: delayVisibility linear 1s; /* exaggerated; 1s is too long */
+}
