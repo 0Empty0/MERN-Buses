@@ -148,6 +148,9 @@
 	font-size: 1rem;
 	line-height: 1.625rem;
 	border-radius: 8px;
+	&__error {
+		color: crimson;
+	}
 	&__wrapper {
 		display: flex;
 		flex-direction: column;

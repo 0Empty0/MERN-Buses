@@ -7,6 +7,6 @@ export const createToken = (user: { _id: Types.ObjectId }) => {
 			id: user._id,
 		},
 		process.env.JWT_SECRET!,
-		{ expiresIn: '7d' }
+		{ expiresIn: '1d' }
 	)
 }

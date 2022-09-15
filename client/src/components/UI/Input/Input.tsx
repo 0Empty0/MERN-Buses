@@ -29,7 +29,9 @@ const Input: FC<
 				value={value}
 				placeholder={label}
 			/>
-			{hasError && <p className='input__error'>{errorLabel}</p>}
+			{hasError && (
+				<p className='input__error paragraph-regular-body'>{errorLabel}</p>
+			)}
 		</div>
 	)
 }

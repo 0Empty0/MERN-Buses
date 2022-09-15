@@ -56,7 +56,7 @@ const useInput = (
 		dispatch({ type: 'BLUR' })
 	}
 
-	const reset = () => {
+	const reset = (): void => {
 		dispatch({ type: 'RESET' })
 	}
 

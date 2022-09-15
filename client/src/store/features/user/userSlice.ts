@@ -128,11 +128,11 @@ const userSlice = createSlice({
 			action: PayloadAction<IUserState>
 		): void => {
 			state.isLoading = false
-			state.user = action.payload.user
-			state.token = action.payload.token
-			state.status = action.payload.status
+			state.user = action.payload?.user
+			state.token = action.payload?.token
+			state.status = null
 		},
-		[getUser.fulfilled as any]: (
+		[getUser.rejected as any]: (
 			state: IUserState,
 			action: PayloadAction<IUserState>
 		): void => {
