@@ -7,6 +7,9 @@ import MyAccountPage from '@/pages/MyAccountPage/MyAccountPage'
 import AgenciesPage from '@/pages/AgenciesPage/AgenciesPage'
 import AboutUsPage from '@/pages/AboutUsPage/AboutUsPage'
 import PrivateRouter from '../PrivateRoute/PrivateRoute'
+import Agencies from '../AccountSubpage/Agencies/Agencies'
+import Buses from '../AccountSubpage/Buses/Buses'
+import Orders from '../AccountSubpage/Orders/Orders'
 
 const Routers: FC = () => {
 	const routes = useRoutes([
@@ -39,15 +42,15 @@ const Routers: FC = () => {
 			children: [
 				{
 					path: 'agencies',
-					element: <HomePage />,
+					element: <Agencies />,
 				},
 				{
 					path: 'buses',
-					element: <HomePage />,
+					element: <Buses />,
 				},
 				{
 					path: 'orders',
-					element: <HomePage />,
+					element: <Orders />,
 				},
 			],
 		},

@@ -1,9 +1,9 @@
-import { useAppDispatch } from '@/hooks/use-redux'
-import { logout } from '@/store/features/user/userSlice'
 import { Fragment, FC, PropsWithChildren } from 'react'
 import { Link } from 'react-router-dom'
 
 import styles from './HeaderButton.module.scss'
+import { useAppDispatch } from '@/hooks/use-redux'
+import { logout } from '@/store/features/user/userSlice'
 
 const HeaderButton: FC<
 	PropsWithChildren<{ isAuth: boolean; openModal: () => void }>
