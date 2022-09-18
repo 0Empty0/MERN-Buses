@@ -64,14 +64,17 @@ body {
 }
 
 .wrapper {
-	display: grid;
-	grid-template-rows: auto 1fr auto;
-	grid-template-columns: 1fr;
+	display: flex;
+	flex-direction: column;
 	min-height: 100vh;
 }
 
+.main {
+	flex: 1 0 auto;
+}
 .footer {
 	background: #123763;
+	flex: 0 0 auto;
 }
 
 .container {
