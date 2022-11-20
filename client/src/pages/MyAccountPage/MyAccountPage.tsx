@@ -8,17 +8,16 @@ const MyAccountPage: FC = () => {
 	const outlet = useOutlet()
 
 	return (
-		<>
-			<section style={{ height: '100%' }}>
-				<div className='container'>
-					<div className={styles.inner}>
-						<Sidebar />
-						<main>{!outlet ? 'Account' : <Outlet />}</main>
-					</div>
+		<section>
+			<div className='container'>
+				<div className={styles.inner}>
+					<Sidebar />
+					<main style={{ height: '100%' }}>
+						{!outlet ? 'text' : <Outlet />}
+					</main>
 				</div>
-			</section>
-			<section>div</section>
-		</>
+			</div>
+		</section>
 	)
 }
 

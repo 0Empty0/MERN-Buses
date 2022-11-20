@@ -8,162 +8,163 @@ import { saveImages } from '../utils/saveImages'
 
 //Create Agency
 export const createAgency = async (req: Request, res: Response) => {
-	try {
-		const { title } = req.body
+  try {
+    const { title } = req.body
 
-		if (req.files) {
-			const filename = saveImages(req.files.logo)
+    if (req.files) {
+      const filename = saveImages(req.files.logo)
 
-			const newAgency = new Agency({
-				author: req.userId,
-				title,
-				logo: filename,
-			})
+      const newAgency = new Agency({
+        author: req.userId,
+        title,
+        logo: filename,
+      })
 
-			await newAgency.save()
-			await User.findByIdAndUpdate(req.userId, {
-				$push: { agencies: newAgency },
-			})
+      await newAgency.save()
+      await User.findByIdAndUpdate(req.userId, {
+        $push: { agencies: newAgency },
+      })
 
-			return res.json(newAgency)
-		} else {
-			res.json({
-				message: 'Something went wrong',
-			})
-		}
-	} catch (error) {
-		res.json({
-			message: 'Something went wrong',
-		})
-	}
+      return res.json(newAgency)
+    } else {
+      res.json({
+        status: 'Something went wrong',
+      })
+    }
+  } catch (error) {
+    res.json({
+      status: 'Something went wrong',
+    })
+  }
 }
 
 //Update Agency
 export const updateAgency = async (req: Request, res: Response) => {
-	try {
-		const { title, id } = req.body
-		const agency = await Agency.findById(id)
+  try {
+    const { title, id } = req.body
+    const agency = await Agency.findById(id)
 
-		if (agency) {
-			if (req.files) {
-				const filename = saveImages(req.files.logo)
+    if (agency) {
+      if (req.files) {
+        const filename = saveImages(req.files.logo)
 
-				agency.logo = filename || ''
-			}
+        agency.logo = filename || ''
+      }
 
-			agency.title = title as string
+      agency.title = title as string
 
-			await agency.save()
-		} else {
-			throw new Error('Something went wrong')
-		}
-		res.json(agency)
-	} catch (error) {
-		res.json({
-			message: 'Something went wrong',
-		})
-	}
+      await agency.save()
+    } else {
+      throw new Error('Something went wrong')
+    }
+    res.json(agency)
+  } catch (error) {
+    res.json({
+      status: 'Something went wrong',
+    })
+  }
 }
 
 //Delete Agency
 export const deleteAgency = async (req: Request, res: Response) => {
-	try {
-		const agency = await Agency.findByIdAndDelete(req.params.id)
+  try {
+    const agency = await Agency.findByIdAndDelete(req.params.id)
 
-		if (!agency) return res.json({ message: 'No Agency found' })
+    if (!agency) return res.json({ status: 'No Agency found' })
 
-		await User.findByIdAndUpdate(req.userId, {
-			$pull: {
-				agencies: req.params.id,
-			},
-		})
+    await User.findByIdAndUpdate(req.userId, {
+      $pull: {
+        agencies: req.params.id,
+      },
+    })
 
-		res.json({ message: 'Agency has been deleted successfully' })
-	} catch (error) {
-		res.json({
-			message: 'Something went wrong',
-		})
-	}
+    res.json({ status: 'Agency has been deleted successfully' })
+  } catch (error) {
+    res.json({
+      status: 'Something went wrong',
+    })
+  }
 }
 
 //Get Agency
 export const getAgency = async (req: Request, res: Response) => {
-	try {
-		const agency = await Agency.findById(req.params.id)
+  try {
+    const agency = await Agency.findById(req.params.id)
 
-		res.json(agency)
-	} catch (error) {
-		res.json({
-			message: 'Something went wrong',
-		})
-	}
+    res.json(agency)
+  } catch (error) {
+    res.json({
+      status: 'Something went wrong',
+    })
+  }
 }
 
 //Get Agencies
 export const getAgencies = async (req: Request, res: Response) => {
-	try {
-		const agencies = await Agency.find().sort('-createdAt')
+  try {
+    const agencies = await Agency.find().sort('-createdAt')
 
-		if (!agencies) return res.json({ message: 'No Agency found' })
+    if (!agencies) return res.json({ status: 'No Agency found' })
 
-		res.json(agencies)
-	} catch (error) {
-		res.json({
-			message: 'Something went wrong',
-		})
-	}
+    res.json(agencies)
+  } catch (error) {
+    res.json({
+      status: 'Something went wrong',
+    })
+  }
 }
+
 //Get My Agencies
 export const getMyAgency = async (req: Request, res: Response) => {
-	try {
-		const user = await User.findById(req.userId)
+  try {
+    const user = await User.findById(req.userId)
 
-		if (!user) return res.json({ message: 'User not found' })
+    if (!user) return res.json({ status: 'User not found' })
 
-		const list = await Promise.all(
-			user.agencies.map(agency => Agency.findById(agency))
-		)
+    const list = await Promise.all(
+      user.agencies.map((agency) => Agency.findById(agency))
+    )
 
-		res.json(list)
-	} catch (error) {
-		res.json({
-			message: 'Something went wrong',
-		})
-	}
+    res.json(list)
+  } catch (error) {
+    res.json({
+      status: 'Something went wrong',
+    })
+  }
 }
 
 //Get Agency Order
 export const getAgencyOrder = async (req: Request, res: Response) => {
-	try {
-		const agency = await Agency.findById(req.params.id)
+  try {
+    const agency = await Agency.findById(req.params.id)
 
-		if (!agency) return res.json({ message: 'No Agency found' })
+    if (!agency) return res.json({ status: 'No Agency found' })
 
-		const list = await Promise.all(
-			agency.orders.map(order => Order.findById(order))
-		)
+    const list = await Promise.all(
+      agency.orders.map((order) => Order.findById(order))
+    )
 
-		res.json(list)
-	} catch (error) {
-		res.json({
-			message: 'Something went wrong',
-		})
-	}
+    res.json(list)
+  } catch (error) {
+    res.json({
+      status: 'Something went wrong',
+    })
+  }
 }
 
 //Get Agency Buses
 export const getAgencyBuses = async (req: Request, res: Response) => {
-	try {
-		const agency = await Agency.findById(req.params.id)
+  try {
+    const agency = await Agency.findById(req.params.id)
 
-		if (!agency) return res.json({ message: 'No Agency found' })
+    if (!agency) return res.json({ status: 'No Agency found' })
 
-		const list = await Promise.all(agency.buses.map(bus => Bus.findById(bus)))
+    const list = await Promise.all(agency.buses.map((bus) => Bus.findById(bus)))
 
-		res.json(list)
-	} catch (error) {
-		res.json({
-			message: 'Something went wrong',
-		})
-	}
+    res.json(list)
+  } catch (error) {
+    res.json({
+      status: 'Something went wrong',
+    })
+  }
 }

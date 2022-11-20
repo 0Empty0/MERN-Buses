@@ -6,97 +6,97 @@ import User from '../models/User'
 
 //Register
 export const register = async (req: Request, res: Response) => {
-	try {
-		const { username, password } = req.body
+  try {
+    const { username, password } = req.body
 
-		const isUsed = await User.findOne({ username })
+    const isUsed = await User.findOne({ username })
 
-		if (isUsed) {
-			return res.json({
-				message: 'User already registered',
-			})
-		}
+    if (isUsed) {
+      return res.json({
+        status: 'User already registered',
+      })
+    }
 
-		const salt = bcrypt.genSaltSync(10)
-		const hash = bcrypt.hashSync(password, salt)
+    const salt = bcrypt.genSaltSync(10)
+    const hash = bcrypt.hashSync(password, salt)
 
-		const newUser = await new User({
-			username,
-			password: hash,
-		})
+    const newUser = await new User({
+      username,
+      password: hash,
+    })
 
-		const token = createToken(newUser)
+    const token = createToken(newUser)
 
-		await newUser.save()
+    await newUser.save()
 
-		return res.json({
-			token,
-			message: 'User registered successfully',
-		})
-	} catch (error) {
-		console.error(error)
+    return res.json({
+      token,
+      status: 'User registered successfully',
+    })
+  } catch (error) {
+    console.error(error)
 
-		return res.json({
-			message: 'Something went wrong',
-		})
-	}
+    return res.json({
+      status: 'Something went wrong',
+    })
+  }
 }
 
 //Login
 export const login = async (req: Request, res: Response) => {
-	try {
-		const { username, password } = req.body
+  try {
+    const { username, password } = req.body
 
-		const user = await User.findOne({ username })
+    const user = await User.findOne({ username })
 
-		if (!user) {
-			return res.json({
-				message: 'User is unavailable',
-			})
-		}
+    if (!user) {
+      return res.json({
+        status: 'User is unavailable',
+      })
+    }
 
-		const isPasswordCorrect = await bcrypt.compare(password, user.password)
+    const isPasswordCorrect = await bcrypt.compare(password, user.password)
 
-		if (!isPasswordCorrect) {
-			return res.json({
-				message: 'Password is incorrect',
-			})
-		}
+    if (!isPasswordCorrect) {
+      return res.json({
+        status: 'Password is incorrect',
+      })
+    }
 
-		const token = createToken(user)
+    const token = createToken(user)
 
-		res.json({
-			token,
-			user,
-			message: 'User login successfully',
-		})
-	} catch (error) {
-		return res.json({
-			message: 'Something went wrong',
-		})
-	}
+    res.json({
+      token,
+      user,
+      status: 'User login successfully',
+    })
+  } catch (error) {
+    return res.json({
+      status: 'Something went wrong',
+    })
+  }
 }
 
 //Get User
 export const getUser = async (req: Request, res: Response) => {
-	try {
-		const user = await User.findById(req.userId)
+  try {
+    const user = await User.findById(req.userId)
 
-		if (!user) {
-			return res.json({
-				message: 'User not found',
-			})
-		}
+    if (!user) {
+      return res.json({
+        status: 'User not found',
+      })
+    }
 
-		const token = createToken(user)
+    const token = createToken(user)
 
-		res.json({
-			token,
-			user,
-		})
-	} catch (error) {
-		return res.json({
-			message: "User didn't login",
-		})
-	}
+    res.json({
+      token,
+      user,
+    })
+  } catch (error) {
+    return res.json({
+      status: "User didn't login",
+    })
+  }
 }

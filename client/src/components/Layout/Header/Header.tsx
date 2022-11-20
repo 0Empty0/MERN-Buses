@@ -42,6 +42,7 @@ const Header: FC = () => {
 													isActive ? styles.active : ''
 												}`
 											}
+											{...(path === '/' ? { end: true } : {})}
 										>
 											{title}
 										</NavLink>
