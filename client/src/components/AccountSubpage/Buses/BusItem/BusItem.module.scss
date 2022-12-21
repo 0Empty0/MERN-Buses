@@ -1,0 +1,58 @@
+@import './src/styles/vars';
+
+.item {
+  //display: flex;
+  //align-items: center;
+  //justify-content: space-between;
+  background: $text-disabled;
+  border-radius: 24px;
+  padding: 20px 30px;
+  //gap: 20px;
+
+  display: grid;
+  grid-template-columns: 2.5fr 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+  gap: 10px;
+  grid-template-areas:
+    'title price places places times times seats reviews'
+    'title price stops stops stops stops seats reviews';
+
+  & + & {
+    margin-top: 16px;
+  }
+}
+
+.title {
+  grid-area: title;
+}
+
+.places {
+  grid-area: places;
+}
+
+.times {
+  grid-area: times;
+}
+
+.stops {
+  grid-area: stops;
+}
+
+.price {
+  grid-area: price;
+}
+
+.seats,
+.reviews {
+  text-align: center;
+}
+
+.seats {
+  grid-area: seats;
+}
+
+.reviews {
+  grid-area: reviews;
+}

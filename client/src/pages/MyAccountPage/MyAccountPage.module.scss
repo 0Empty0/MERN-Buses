@@ -1,3 +1,23 @@
+.wrapper,
 .inner {
-	display: flex;
+  height: 100%;
+}
+
+.wrapper {
+  padding-block: 15px 120px;
+}
+
+.inner {
+  display: flex;
+  align-items: stretch;
+  gap: 25px;
+}
+
+.main {
+  flex: 1 1 auto;
+  height: 100%;
+}
+
+.section-wrapper {
+  flex: 1 1 auto;
 }

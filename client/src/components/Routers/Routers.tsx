@@ -4,54 +4,6 @@ import { Route, Routes } from 'react-router-dom'
 import { IRoutes, privateRoutes, publicRoutes } from './routes'
 import { useAppSelector } from '@/hooks/use-redux'
 
-// const Routers: FC = () => {
-// 	const routes = useRoutes([
-// 		//PublicRoutes
-// 		{
-// 			index: true,
-// 			element: <HomePage />,
-// 		},
-// 		{
-// 			path: 'buses',
-// 			element: <BusesPage />,
-// 		},
-// 		{
-// 			path: 'agencies',
-// 			element: <AgenciesPage />,
-// 		},
-// 		{
-// 			path: 'about',
-// 			element: <AboutUsPage />,
-// 		},
-// 		//PrivateRoutes
-
-// 		{
-// 			path: 'account',
-// 			element: (
-// 				<PrivateRouter>
-// 					<MyAccountPage />
-// 				</PrivateRouter>
-// 			),
-// 			children: [
-// 				{
-// 					path: 'agencies',
-// 					element: <Agencies />,
-// 				},
-// 				{
-// 					path: 'buses',
-// 					element: <Buses />,
-// 				},
-// 				{
-// 					path: 'orders',
-// 					element: <Orders />,
-// 				},
-// 			],
-// 		},
-// 	])
-
-// 	return routes
-// }
-
 const Routers: FC = () => {
   const { user: isAuth } = useAppSelector((state) => state.user)
 

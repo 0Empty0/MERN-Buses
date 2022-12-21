@@ -1,3 +1,5 @@
+import React from 'react'
+
 import BusesPage from '@/pages/BusesPage/BusesPage'
 import HomePage from '@/pages/HomePage/HomePage'
 import MyAccountPage from '@/pages/MyAccountPage/MyAccountPage'
@@ -6,7 +8,6 @@ import AboutUsPage from '@/pages/AboutUsPage/AboutUsPage'
 import Agencies from '../AccountSubpage/Agencies/Agencies'
 import Buses from '../AccountSubpage/Buses/Buses'
 import Orders from '../AccountSubpage/Orders/Orders'
-import React from 'react'
 import Page404 from '@/pages/Page404/Page404'
 
 export interface IRoutes {
